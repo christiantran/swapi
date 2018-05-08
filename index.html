@@ -14,7 +14,7 @@
     <section class='container-fluid'>
         <div class="row">
             <div class="col">
-                <h1>TODO: STAR WARS STUFF HERE</h1>
+                <h3>TODO: STAR WARS STUFF HERE</h3>
                 <button onclick="app.controllers.swapiController.getPeople()">GET PEOPLE</button>
 
                 <div id="buttons">
@@ -24,13 +24,23 @@
                 <div id="sw-people"></div>
             </div>
             <div class="col">
+                <h3>Pokemon</h3>
+                <button onclick="app.controllers.pokemonController.getPokemon()">GET POKEMON</button>
+
+                <div id="poke-button">
+
+                </div>
+
+                <div id="poke-people"></div>
+            </div>
+            <div class="col">
                 <div class="row">
                     <div class="col">
-                        <h1>Races</h1>
+                        <h3>Races</h3>
                         <div id='races-data'></div>
                     </div>
                     <div class="col">
-                        <h1>Classes</h1>
+                        <h3>Classes</h3>
                         <div id='classes-data'></div>
                     </div>
                 </div>

@@ -3,10 +3,6 @@ function DndService() {
     var baseUrl = 'http://www.dnd5eapi.co/api/'
 
 
-
-
-
-
     this.getCollection = function getCollection(collection, cb) {
         $.get(bcw + baseUrl + collection)
             .then(data => {
