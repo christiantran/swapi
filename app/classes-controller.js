@@ -7,7 +7,7 @@ function ClassesController() {
         for (let i = 0; i < arr.length; i++) {
             const cl = arr[i];
             template += `
-          <li onclick="app.controllers.classesController.getDetails('${cl.url}')">${cl.name}</li>
+          <li onclick="app.controllers.classesController.getClasses('${cl.url}')">${cl.name}</li>
         `;
         }
         template += "</ul>";

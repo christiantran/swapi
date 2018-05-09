@@ -1,41 +1,42 @@
-/*function PokemonController() {
+function PokemonController() {
     //private
     var pokemonService = new PokemonService();
 
-
-    function drawPokemon(people) {
-        var template = "";
-        people.forEach(pokemon => {
-            template += `<div>
-        <h5>${pokemon.name}</h5>
-      </div>`;
-        });
-        document.getElementById("poke-people").innerHTML = template;
-    }
-
-
-    function drawPokeButton(res) {
-        var template = ''
-        if (res.previous) {
-            template += `<button onclick="app.controllers.pokemonController.getPokemon('${res.previous}')">Previous</button>`
+    function drawPokemon(arr) {
+        var template = "<ul>"
+        for (var i = 0; i < arr.length; i++) {
+            var poke = arr[i];
+            template += `
+            <li onclick="app.controllers.pokemoncontroller.getPokemon('${poke.url}')">${poke.name}</li>
+            `
         }
-        if (res.next) {
-            template += `<button onclick="app.controllers.pokemonController.getPokemon('${res.next}')">Next</button>`
-        }
-        document.getElementById('poke-button').innerHTML = template
-    }
+        template += `</ul>`
+        document.getElementById("Pokemon").innerHTML = template
+    };
 
-    function handlePokemonResponse(res) {
-        drawPokeButton(res);
-        drawPokemon(res.results);
+    function drawPokeInfo(info) {
+        var template = `
+        <img src="${info.sprites.front_default}">
+        <h1>${info.name}</h1>
+        <h3>Weight: ${info.weight}</h3>
+        <h3>Height: ${info.height}</h3>
+        <h3>Base Experience: ${info.base_experience}</h3>
+        <h3>Types:</h3>
+        <ul>
+        `
+        for (let i = 0; i < info.types.length; i++) {
+            const type = info.types[i].type;
+            template += `
+            <li>${type.name}
+            `
+        }
+        document.getElementById("pokeInfo").innerHTML = template
     }
 
     //public
 
-    this.getPokemon = function (url) {
-        pokemonService.getPokemon(url, handlePokemonResponse);
+    this.getPokeInfo = function getPokeInfo(url) {
+        pokemonService.getPokeInfo(url, drawPokeInfo);
     };
-
-
-
+    pokemonService.getPokemon("pokemon", drawPokemon)
 }
